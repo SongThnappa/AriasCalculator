@@ -1,0 +1,692 @@
+<!-- Little girl your daddy stayed at work till 11am to do this for you. Only because I love you.
+Created by Jessie James Jones Jr
+Github SongThnappa -->
+<!-- P.S. if you are looking at this code...it's time to learn lol -->
+
+
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <title>jQuery Calculator</title>
+
+    <!-- Added link to the jQuery Library -->
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
+
+    <!-- Added a link to Bootstrap-->
+    <link
+      rel="stylesheet"
+      href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css"
+    />
+    <link href="https://fonts.googleapis.com/css?family=Freckle+Face&display=swap" rel="stylesheet" />
+
+    <!-- Added a link to our external stylesheet-->
+    <link rel="stylesheet" href="style.css" />
+
+    <script src="https://code.jquery.com/jquery.js"></script>
+    <script></script>
+  </head>
+  <body>
+    <!-- Jumbotron for Title -->
+    <div class="jumbotron">
+      <h1 class="text-center">Aria's Calculator</h1>
+      <h3 class="text-center"></h3>
+    </div>
+
+    <div class="container1">
+      <div class="row">
+        <!-- Calculator Card -->
+        <div class="col-lg-4">
+          <div class="card">
+            <h3 class="card-header">Calculator</h3>
+
+            <div class="card-body digits">
+              <button id="button-1" class="btn btn-primary number" value="1">
+                <span>1</span>
+              </button>
+              <button id="button-2" class="btn btn-primary number" value="2">
+                <span>2</span>
+              </button>
+              <button id="button-3" class="btn btn-primary number" value="3">
+                <span>3</span>
+              </button>
+              <button
+                id="button-add"
+                class="btn btn-danger operator"
+                value="plus"
+              >
+                <span>+</span>
+              </button>
+              <br /><br />
+              <button id="button-4" class="btn btn-primary number" value="4">
+                <span>4</span>
+              </button>
+              <button id="button-5" class="btn btn-primary number" value="5">
+                <span>5</span>
+              </button>
+              <button id="button-6" class="btn btn-primary number" value="6">
+                <span>6</span>
+              </button>
+              <button
+                id="button-subtract"
+                class="btn btn-danger operator"
+                value="minus"
+              >
+                <span>&minus;</span>
+              </button>
+              <br /><br />
+              <button id="button-7" class="btn btn-primary number" value="7">
+                <span>7</span>
+              </button>
+              <button id="button-8" class="btn btn-primary number" value="8">
+                <span>8</span>
+              </button>
+              <button id="button-9" class="btn btn-primary number" value="9">
+                <span>9</span>
+              </button>
+              <button
+                id="button-multiply"
+                class="btn btn-danger operator"
+                value="times"
+              >
+                <span>&times;</span>
+              </button>
+              <br /><br />
+              <button id="button-0" class="btn btn-primary number" value="0">
+                <span>0</span>
+              </button>
+              <button
+                id="button-divide"
+                class="btn btn-danger operator"
+                value="divide"
+              >
+                <span>&divide;</span>
+              </button>
+              <button
+                id="button-power"
+                class="btn btn-danger operator"
+                value="power"
+              >
+                <span>^</span>
+              </button>
+              <button
+                id="button-equal"
+                class="btn btn-success equal"
+                value="equals"
+              >
+                <span>=</span>
+              </button>
+              <br /><br />
+              <button
+                id="button-clear"
+                class="btn btn-dark clear"
+                value="clear"
+              >
+                <span>clear</span>
+              </button>
+            </div>
+          </div>
+        </div>
+
+        <!-- Result Card -->
+        <div class="col-lg-5">
+          <div class="card">
+            <h3 class="card-header">Result</h3>
+            <div class="card results">
+              <div class="row">
+                <div class="col-lg-12">
+                  <div class="firstnumber">
+                    <h1 id="first-number"></h1>
+                  </div>
+                  <div class="operator">
+                    <h1 id="operator"></h1>
+                  </div>
+                  <div class="secondnumber">
+                    <h1 id="second-number"></h1>
+                  </div>
+                </div>
+              </div>
+              <hr />
+              <h1 id="result"></h1>
+
+              <div class="row">
+                <div id="guessbox">
+                  <div class="form-group">
+                    <label for="comment">Aria, What's your Guess?</label>
+                    <textarea
+                      class="form-control"
+                      rows="2"
+                      id="guess"
+                    ></textarea>
+                  </div>
+                </div>
+                <div id="guessbox1">
+                  <div id="guessButtonDiv">
+                    <button
+                      id="guessButton"
+                      type="button"
+                      class="btn btn-success"
+                    >
+                      Submit Your Guess
+                    </button>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+        <div class="col-lg-3">
+          <div class="card">
+            <h3 class="card-header">Correct?</h3>
+            <div class="cardwinbox">
+                <div class="row">
+                  <div class="col-lg-12">
+                    <div id="winBox">
+
+                    </div>
+                    </div>
+                    </div>
+                    </div>
+
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <script type="text/javascript">
+      $(document).ready(function() {
+        var numbers1 = [0, 1, 2, 3, 4, 5, 6, 7, 8, 9];
+        var numbers2 = [0, 1, 2, 3, 4, 5, 6, 7, 8, 9];
+        // var operators = {
+        //   addition: addition(x, y),
+        //   subtraction: subtraction(x, y),
+        //   multiplication: multiplication(x, y),
+        //   divide: divide(x, y),
+        //   power: power(x, y)
+        // };
+        var x = numberX;
+        console.log(x);
+
+        var result = 0;
+        var powerValue;
+        // var z;
+        // // var input = operators[z];
+        var button0 = 0;
+        var button1 = 1;
+        var button2 = 2;
+        var button3 = 3;
+        var button4 = 4;
+        var button5 = 5;
+        var button6 = 6;
+        var button7 = 7;
+        var button8 = 8;
+        var button9 = 9;
+        var buttonPress;
+        var inputValueX = [];
+        var inputValueY = [];
+        var numberX;
+        var numberY;
+        var newNumberX;
+        var indexNumX = 0;
+        var indexNumY = 0;
+        var logicalOperatedSwitch = false;
+        var add = false;
+        var subtract = false;
+        var multiply = false;
+        var divide = false;
+        var power = false;
+        var equalPressed = false;
+        var i;
+
+        // ++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++
+        // ++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++
+        // ++++++++++++++++GUESS BOX FOR ARIA++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++
+        // ++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++
+
+        document
+          .getElementById("guessButton")
+          .addEventListener("click", function guessValue() {
+            var AriaGuess = document.getElementById("guess").value;
+            alert(AriaGuess);
+          });
+
+        // ++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++
+        // ++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++
+        // ++++++++++++++++This is the numberCalulation input ++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++
+        // ++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++
+
+        function numberFunc() {
+          if (indexNumX === 0 && logicalOperatedSwitch === false) {
+            numberX = inputValueX[indexNumX];
+            indexNumX = indexNumX + 1;
+            $("#first-number").text(numberX);
+          } else if (indexNumX > 0 && logicalOperatedSwitch === false) {
+            numberX = numberX + "" + inputValueX[indexNumX];
+            indexNumX = indexNumX + 1;
+            $("#first-number").text(numberX);
+
+            console.log(numberX);
+          } else if (indexNumY === 0 && logicalOperatedSwitch === true) {
+            numberY = inputValueY[indexNumY];
+            indexNumY = indexNumY + 1;
+            $("#second-number").text(numberY);
+          } else if (indexNumY > 0 && logicalOperatedSwitch === true) {
+            numberY = numberY + "" + inputValueY[indexNumY];
+            indexNumY = indexNumY + 1;
+            $("#second-number").text(numberY);
+            console.log(numberY);
+          }
+        }
+
+        // ++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++
+        // ++++++++++++++++++++++++++++++CLEAR AND DIGIT BUTTONS++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++
+        // ++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++
+        // ++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++
+
+        document
+          .getElementById("button-clear")
+          .addEventListener("click", function inputClear() {
+            inputValueX = [];
+            inputValueY = [];
+            indexNumX = 0;
+            indexNumY = 0;
+            numberX = "";
+            numberY = "";
+            result = "";
+            add = false;
+            subtract = false;
+            multiply = false;
+            divide = false;
+            power = false;
+            logicalOperatedSwitch = false;
+            $("#first-number").text(numberX);
+            $("#second-number").text(numberY);
+            $("#operator").text("");
+            $("h1#negative").attr("id", "result");
+            $("#result").text(result);
+            equalPressed = false;
+
+            console.log(inputValueX);
+          });
+
+        document
+          .getElementById("button-0")
+          .addEventListener("click", function input0() {
+            if (equalPressed === true) {
+            } else {
+              if (logicalOperatedSwitch === false) {
+                inputValueX.push(button0);
+                console.log(inputValueX);
+                numberFunc();
+                console.log(numberX);
+              } else {
+                inputValueY.push(button0);
+                console.log(inputValueY);
+                numberFunc();
+                console.log(numberY);
+              }
+            }
+          });
+
+        document
+          .getElementById("button-1")
+          .addEventListener("click", function input1() {
+            if (equalPressed === true) {
+            } else {
+              if (logicalOperatedSwitch === false) {
+                inputValueX.push(button1);
+                console.log(inputValueX);
+                numberFunc();
+                console.log(numberX);
+              } else {
+                inputValueY.push(button1);
+                console.log(inputValueY);
+                numberFunc();
+                console.log(numberY);
+              }
+            }
+          });
+
+        document
+          .getElementById("button-2")
+          .addEventListener("click", function input2() {
+            if (equalPressed === true) {
+            } else {
+              if (logicalOperatedSwitch === false) {
+                inputValueX.push(button2);
+                console.log(inputValueX);
+                numberFunc();
+                console.log(numberX);
+              } else {
+                inputValueY.push(button2);
+                console.log(inputValueY);
+                numberFunc();
+                console.log(numberY);
+              }
+            }
+          });
+
+        document
+          .getElementById("button-3")
+          .addEventListener("click", function input3() {
+            if (equalPressed === true) {
+            } else {
+              if (logicalOperatedSwitch === false) {
+                inputValueX.push(button3);
+                console.log(inputValueX);
+                numberFunc();
+                console.log(numberX);
+              } else {
+                inputValueY.push(button3);
+                console.log(inputValueY);
+                numberFunc();
+                console.log(numberY);
+              }
+            }
+          });
+
+        document
+          .getElementById("button-4")
+          .addEventListener("click", function input4() {
+            if (equalPressed === true) {
+            } else {
+              if (logicalOperatedSwitch === false) {
+                inputValueX.push(button4);
+                console.log(inputValueX);
+                numberFunc();
+                console.log(numberX);
+              } else {
+                inputValueY.push(button4);
+                console.log(inputValueY);
+                numberFunc();
+                console.log(numberY);
+              }
+            }
+          });
+        document
+          .getElementById("button-5")
+          .addEventListener("click", function input5() {
+            if (equalPressed === true) {
+            } else {
+              if (logicalOperatedSwitch === false) {
+                inputValueX.push(button5);
+                console.log(inputValueX);
+                numberFunc();
+                console.log(numberX);
+              } else {
+                inputValueY.push(button5);
+                console.log(inputValueY);
+                numberFunc();
+                console.log(numberY);
+              }
+            }
+          });
+
+        document
+          .getElementById("button-6")
+          .addEventListener("click", function input6() {
+            if (equalPressed === true) {
+            } else {
+              if (logicalOperatedSwitch === false) {
+                inputValueX.push(button6);
+                console.log(inputValueX);
+                numberFunc();
+                console.log(numberX);
+              } else {
+                inputValueY.push(button6);
+                console.log(inputValueY);
+                numberFunc();
+                console.log(numberY);
+              }
+            }
+          });
+
+        document
+          .getElementById("button-7")
+          .addEventListener("click", function input7() {
+            if (equalPressed === true) {
+            } else {
+              if (logicalOperatedSwitch === false) {
+                inputValueX.push(button7);
+                console.log(inputValueX);
+                numberFunc();
+                console.log(numberX);
+              } else {
+                inputValueY.push(button7);
+                console.log(inputValueY);
+                numberFunc();
+                console.log(numberY);
+              }
+            }
+          });
+
+        document
+          .getElementById("button-8")
+          .addEventListener("click", function input8() {
+            if (equalPressed === true) {
+            } else {
+              if (logicalOperatedSwitch === false) {
+                inputValueX.push(button8);
+                console.log(inputValueX);
+                numberFunc();
+                console.log(numberX);
+              } else {
+                inputValueY.push(button8);
+                console.log(inputValueY);
+                numberFunc();
+                console.log(numberY);
+              }
+            }
+          });
+
+        document
+          .getElementById("button-9")
+          .addEventListener("click", function input9() {
+            if (equalPressed === true) {
+            } else {
+              if (logicalOperatedSwitch === false) {
+                inputValueX.push(button9);
+                console.log(inputValueX);
+                numberFunc();
+                console.log(numberX);
+              } else {
+                inputValueY.push(button9);
+                console.log(inputValueY);
+                numberFunc();
+                console.log(numberY);
+              }
+            }
+          });
+
+        // ++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++
+        // ++++++++++++++++++++++++++++++OPERATOR BUTTONS++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++
+        // ++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++
+        // ++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++
+        console.log(add, subtract, multiply, divide, power);
+        document
+          .getElementById("button-add")
+          .addEventListener("click", function inputadd() {
+            if (equalPressed === true) {
+            } else {
+              add = true;
+              subtract = false;
+              multiply = false;
+              divide = false;
+              power = false;
+              console.log(add, subtract, multiply, divide, power);
+              logicalOperatedSwitch = true;
+              $("#operator").text("+");
+            }
+          });
+
+        document
+          .getElementById("button-subtract")
+          .addEventListener("click", function inputsub() {
+            if (equalPressed === true) {
+            } else {
+              add = false;
+              subtract = true;
+              multiply = false;
+              divide = false;
+              power = false;
+              console.log(add, subtract, multiply, divide, power);
+              logicalOperatedSwitch = true;
+              $("#operator").text("-");
+            }
+          });
+
+        document
+          .getElementById("button-multiply")
+          .addEventListener("click", function inputmulti() {
+            if (equalPressed === true) {
+            } else {
+              add = false;
+              subtract = false;
+              multiply = true;
+              divide = false;
+              power = false;
+              console.log(add, subtract, multiply, divide, power);
+              logicalOperatedSwitch = true;
+              $("#operator").text("*");
+            }
+          });
+
+        document
+          .getElementById("button-divide")
+          .addEventListener("click", function inputdivi() {
+            if (equalPressed === true) {
+            } else {
+              add = false;
+              subtract = false;
+              multiply = false;
+              divide = true;
+              power = false;
+              console.log(add, subtract, multiply, divide, power);
+              logicalOperatedSwitch = true;
+              $("#operator").text("/");
+            }
+          });
+
+        document
+          .getElementById("button-power")
+          .addEventListener("click", function inputpower() {
+            if (equalPressed === true) {
+            } else {
+              add = false;
+              subtract = false;
+              multiply = false;
+              divde = false;
+              power = true;
+              console.log(add, subtract, multiply, divide, power);
+              $("#operator").text("^");
+
+              logicalOperatedSwitch = true;
+            }
+          });
+
+        // ++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++
+        // +++++++++++++++++++++OPERATOR FUNCTIONS+++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++
+        // ++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++
+        // ++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++
+
+        function additionFunc(x, y) {
+          // making sure the string value is being considered as a number value before calculation
+          x = parseInt(x, 10);
+          y = parseInt(y, 10);
+          result = x + y;
+        }
+
+        function subtractionFunc(x, y) {
+          // making sure the string value is being considered as a number value before calculation
+          x = parseInt(x, 10);
+          y = parseInt(y, 10);
+          result = x - y;
+        }
+
+        function multiplicationFunc(x, y) {
+          // making sure the string value is being considered as a number value before calculation
+          x = parseInt(x, 10);
+          y = parseInt(y, 10);
+          result = x * y;
+        }
+
+        function divideFunc(x, y) {
+          // making sure the string value is being considered as a number value before calculation
+          x = parseInt(x, 10);
+          y = parseInt(y, 10);
+          result = x / y;
+        }
+
+        function powerFunc(x, y) {
+          // making sure the string value is being considered as a number value before calculation
+          x = parseInt(x, 10);
+          y = parseInt(y, 10);
+
+          // power of 0 equals 1
+          if (y === 0) {
+            result = 1;
+          }
+          // power of 1 equals the integer
+          else if (y === 1) {
+            result = x;
+          }
+          // power this a loop...have one variable equal other variable and times it by it's base value
+          // in this case "x" the set the secondary variable equal to the original
+          // then loop the variable over the amount of "y" ignoring zero since we assume at this point
+          // y is greater than 1
+          else {
+            var feedValue = x;
+            var powerValue;
+
+            for (i = 1; i < y; i++) {
+              powerValue = feedValue * x;
+
+              feedValue = powerValue;
+              i = i++;
+
+              console.log(y);
+            }
+
+            result = powerValue;
+          }
+        }
+        // ++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++
+        // +++++++++++++++++++++EQUALS BUTTON+++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++
+        // ++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++
+        // ++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++
+
+        document
+          .getElementById("button-equal")
+          .addEventListener("click", function inputpower() {
+            if (add === true) {
+              additionFunc(numberX, numberY);
+              $("#result").text(result);
+              console.log(result);
+            } else if (subtract === true) {
+              subtractionFunc(numberX, numberY);
+              $("#result").text(result);
+              console.log(result);
+            } else if (multiply === true) {
+              multiplicationFunc(numberX, numberY);
+              $("#result").text(result);
+              console.log(result);
+            } else if (divide === true) {
+              divideFunc(numberX, numberY);
+              $("#result").text(result);
+              console.log(result);
+            } else if (power === true) {
+              powerFunc(numberX, numberY);
+              $("#result").text(result);
+              console.log(result);
+            }
+            if (result < 0) {
+              $("h1#result").attr("id", "negative");
+            } else {
+            }
+
+            equalPressed = true;
+          });
+      });
+    </script>
+  </body>
+</html>

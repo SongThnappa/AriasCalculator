@@ -1,0 +1,189 @@
+/* Select all spans that are immediate children of buttons */
+button>span {
+    font-size: 2.5rem;
+}
+
+body{
+background-color: purple;
+
+}
+.jumbotron{
+background-image: url(docs/background.gif);
+background-position: center;
+background-size: cover;
+width: 100%;
+height: 150px;
+
+}
+.digits{
+
+    background-image: url(docs/CalcBackground.gif);
+    background-position: center;
+    background-size: cover;
+}
+.container1{
+    
+    background-image: url(docs/background2.gif);
+    background-position: center;
+    background-size: cover;
+    margin: 1px 10px 1px 10px;
+    
+   
+}
+.text-center{
+
+color: white;
+font-family: 'Freckle Face', cursive;
+font-size: 60pt;
+margin-bottom: 30px;
+
+
+}
+.firstnumber {
+
+    /* background-color: blue; */
+    width: 33.3%;
+    text-align: center;
+    float: left;
+    border: 2px solid plum;
+    padding: 0px 0px 0px 0px;
+    margin: 0px 0px 0px 0px;
+
+
+}
+
+
+#operator {
+
+    /* background-color: orange; */
+    width: 33.3%;
+   
+    padding: 0px 0px 0px 0px;
+    margin: 0px 0px 0px 0px;
+    font-size: 37pt;
+    text-align: center;
+    /* display: inline-block; */
+    border: 2px dotted red;
+   
+    float: left;
+}
+
+.secondnumber {
+
+    /* background-color: red; */
+    width: 33.3%;
+    text-align: center;
+    float: right;
+    border: 2px solid plum;
+    padding: 0px 0px 0px 0px;
+    margin: 0px 0px 0px 0px;
+}
+
+
+.clearfix::after {
+    content: "";
+    clear: both;
+    display: table;
+}
+
+#result {
+    height: 30%;
+    /* margin-top:60px; */
+    width: 100%;
+    text-align: center;
+
+    /* background-color: grey; */
+
+
+}
+
+
+#negative {
+
+    width: 100%;
+    text-align: center;
+    color: red;
+    /* background-color: grey; */
+
+
+}
+
+.digits {
+
+    object-position: justify;
+    border: 10px dotted rebeccapurple;
+
+}
+
+#guessbox {
+    margin-left: 30px;
+    margin-bottom: 20px;
+    height: 130px;
+    width: 40%;
+
+    object-position: center;
+
+}
+
+#guessbox1 {
+
+    height: 130px;
+
+    /* margin-top: 25px; */
+
+
+    object-position: center;
+
+}
+
+#guessButton {
+
+    margin-top: 70px;
+    margin-left: 30px;
+
+}
+
+.winBox {
+    height: 130px;
+    width: 130px;
+    background-color: blue;
+
+
+}
+
+.card-header {
+
+    background-color: hotpink;
+    text-align: center;
+}
+
+.card {
+
+    width: 100%;
+    /* background-color:blue; */
+}
+
+.cardwinbox{
+
+    height: 300px;
+    width: 100%;
+   background-color: black;
+    background-image: url(docs/WinGif3.gif);
+    background-position: center;
+    background-size: contain;
+    background-repeat: no-repeat;
+    border: 10px dotted rebeccapurple;
+    
+
+}
+
+#button-clear{
+
+width: 100%;
+
+}
+
+.results{
+    border: 10px dotted hotpink;
+
+}
