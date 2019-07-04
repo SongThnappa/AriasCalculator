@@ -8,19 +8,16 @@ background-color: purple;
 
 }
 .btn{
-    background-color: blueviolet;
-    opacity: 0.75;
 
-}
-@media (min-width: 414px){
-
-    .btn{
-
-    width: 110px;
+    
     background-color: blueviolet;
     opacity: 0.75;
 }
-}
+
+
+
+
+
 
 .jumbotron{
 background-image: url(docs/background.gif);
@@ -202,3 +199,13 @@ width: 100%;
     border: 10px dotted hotpink;
 
 }
+
+
+@media (max-device-width: 414px) {
+
+    .btn{
+    
+        width: 110px;
+    }
+    
+    }
