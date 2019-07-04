@@ -185,9 +185,18 @@ margin-bottom: 120px;
 
 .card-header {
 
-    background-color: hotpink;
+    background-image: url(docs/header_glitter.gif);
+    background-position: center;
+    background-size: cover;
     text-align: center;
     color: white;
+    font-size: 27pt;
+
+}
+
+.card-header #img{
+    
+
 }
 
 .card {
@@ -201,7 +210,7 @@ margin-bottom: 120px;
     height: 300px;
     width: 100%;
    background-color: black;
-    background-image: url(docs/WinGif3.gif);
+    background-image: url(docs/WinGif2.gif);
     background-position: center;
     background-size: contain;
     background-repeat: no-repeat;
