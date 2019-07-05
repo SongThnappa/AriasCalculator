@@ -152,16 +152,19 @@ Github SongThnappa -->
                 </div>
               </div>
               <hr />
-              <h1 id="result"></h1>
-
+		<div id="resultBox">
+              <h1 id="result">???</h1>
+		</div>
               <div class="row">
                 <div id="guessbox">
                   <div class="form-group">
+			<div id="ariaGuessFirst">
                     <label for="comment">Aria, What's your Guess?</label>
+			</div>
                     <textarea
                       class="form-control"
                       rows="2"
-                      id="guess"
+                      id="guess" type="text" placeholder="You have to guess Aria"
                     ></textarea>
                   </div>
                 </div>
@@ -199,6 +202,7 @@ Github SongThnappa -->
     </div>
 
     <script type="text/javascript">
+
       $(document).ready(function() {
         var numbers1 = [0, 1, 2, 3, 4, 5, 6, 7, 8, 9];
         var numbers2 = [0, 1, 2, 3, 4, 5, 6, 7, 8, 9];
@@ -242,18 +246,9 @@ Github SongThnappa -->
         var power = false;
         var equalPressed = false;
         var i;
+	var result;
 
-        // ++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++
-        // ++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++
-        // ++++++++++++++++GUESS BOX FOR ARIA++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++
-        // ++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++
-
-        document
-          .getElementById("guessButton")
-          .addEventListener("click", function guessValue() {
-            var AriaGuess = document.getElementById("guess").value;
-            alert(AriaGuess);
-          });
+       
 
         // ++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++
         // ++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++
@@ -309,8 +304,14 @@ Github SongThnappa -->
             $("#operator").text("");
             $("h1#negative").attr("id", "result");
             $("#result").text(result);
+	    $("div#ariaGuessNow").attr("id", "ariaGuessFirst");
             equalPressed = false;
-
+	    $("#guess").val('').change();
+	    $("button#guessButtonRetry").attr("id", "guessButton");
+	    $("button#guessButton").text("Submit Your Guess");
+	    $("button#guessButtonWin").attr("id", "guessButton");
+	    $("button#guessButton").text("Submit Your Guess");
+	    $("textarea#guess").attr("placeholder", "You have to Guess Aria");
             console.log(inputValueX);
           });
 
@@ -660,38 +661,115 @@ Github SongThnappa -->
         // ++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++
         // ++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++
 
-        document
-          .getElementById("button-equal")
-          .addEventListener("click", function inputpower() {
+		function equalButton() {
             if (add === true) {
               additionFunc(numberX, numberY);
-              $("#result").text(result);
+              // $("#result").text(result);
+		 $("div#ariaGuessFirst").attr("id", "ariaGuessNow");
               console.log(result);
             } else if (subtract === true) {
               subtractionFunc(numberX, numberY);
-              $("#result").text(result);
+              // $("#result").text(result);
+		$("div#ariaGuessFirst").attr("id", "ariaGuessNow");
               console.log(result);
             } else if (multiply === true) {
               multiplicationFunc(numberX, numberY);
-              $("#result").text(result);
+              // $("#result").text(result);
+		$("div#ariaGuessFirst").attr("id", "ariaGuessNow");
               console.log(result);
             } else if (divide === true) {
               divideFunc(numberX, numberY);
-              $("#result").text(result);
+              // $("#result").text(result);
+		$("div#ariaGuessFirst").attr("id", "ariaGuessNow");
               console.log(result);
             } else if (power === true) {
               powerFunc(numberX, numberY);
-              $("#result").text(result);
+              // $("#result").text(result);
+		$("div#ariaGuessFirst").attr("id", "ariaGuessNow");
               console.log(result);
             }
             if (result < 0) {
-              $("h1#result").attr("id", "negative");
+               $("h1#result").attr("id", "negative");
             } else {
             }
 
             equalPressed = true;
+          }
+
+
+
+        document.getElementById("button-equal").addEventListener("click", equalButton);
+    
+
+
+
+ // ++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++
+        // ++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++
+        // ++++++++++++++++GUESS BOX FOR ARIA++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++
+        // ++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++
+
+        document
+          .getElementById("guessButton")
+          .addEventListener("click", function guessValue() {
+            	var AriaGuess = document.getElementById("guess").value;
+            	AriaGuess=parseInt(AriaGuess, 10);
+		equalButton();	
+		console.log(AriaGuess);
+		console.log(result);
+		
+
+		if (AriaGuess === result){
+
+// second guess logic =============================================================
+		$("div#resultBoxIncorrect").attr("id", "resultBox");
+		$("button#guessButtonRetry").attr("id", "guessButton");	
+// ================================================================================	
+		console.log("You are correct");
+		$("#guess").val('').change();
+		$("textarea#guess").attr("placeholder", (AriaGuess + " IS CORRECT!! GREAT JOB!!!"));
+		$("#result").text(result);
+		$("button#guessButton").text("CORRECT!!!");
+		$("button#guessButton").attr("id", "guessButtonWin");
+		$("div#resultBox").attr("id", "resultBoxCorrect");
+		$("div#ariaGuessNow").attr("id", "ariaGuessFirst");
+		
+		
+}
+
+		else{
+		
+		$("#guess").val('').change();
+		console.log("Try again");
+		$("div#resultBox").attr("id", "resultBoxIncorrect");
+		$("button#guessButton").text("Try Again");
+		$("textarea#guess").attr("placeholder", (AriaGuess + " is not correct. Try Again Honey"));
+		$("button#guessButton").attr("id", "guessButtonRetry");
+
+}
+
           });
-      });
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+});
     </script>
   </body>
 </html>

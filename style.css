@@ -17,6 +17,9 @@ text-align: center;
     opacity: 0.75;
 }
 
+textarea{
+background-color: #63f542;
+}
 
 
 
@@ -68,7 +71,8 @@ margin-bottom: 120px;
 .firstnumber {
 
     /* background-color: blue; */
-    width: 33.3%;
+height: 60px;    
+width: 33.3%;
     text-align: center;
     float: left;
     border: 2px solid plum;
@@ -82,6 +86,7 @@ margin-bottom: 120px;
 #operator {
 
     /* background-color: orange; */
+	height: 60px; 
     width: 33.3%;
    
     padding: 0px 0px 0px 0px;
@@ -95,7 +100,7 @@ margin-bottom: 120px;
 }
 
 .secondnumber {
-
+	height: 60px; 
     /* background-color: red; */
     width: 33.3%;
     text-align: center;
@@ -113,7 +118,8 @@ margin-bottom: 120px;
 }
 
 #result {
-    height: 30%;
+	height: 60px; 
+   border: 3px dotted rebeccapurple;
     /* margin-top:60px; */
     width: 100%;
     text-align: center;
@@ -141,6 +147,34 @@ margin-bottom: 120px;
     margin: 0px 0px 0px 0px;
 
 }
+
+
+#ariaGuessNow{
+ 
+
+  background-color: #FFFFFF;
+  animation-name: guessNowAlert;
+  animation-duration: 1.75s;
+  animation-iteration-count: infinite;
+}
+
+@keyframes guessNowAlert {
+  0% {
+    background-color: #FFFFFF;
+  }
+  50% {
+    background-color: #EF9E9E;
+  }
+  100 {
+    background-color: #8A0E0E;
+  }
+}
+
+
+
+
+}
+
 
 #guessbox {
     margin-left: 30px;
@@ -174,6 +208,79 @@ margin-bottom: 120px;
     font-size: 20pt;
 
 }
+
+
+#guessButtonRetry{
+   width: 100%;
+    margin-top: 43px;
+    margin-left: 30px;
+    text-align: center;
+    padding: 0px 0px 0px 0px;
+    font-size: 20pt;
+ background-color: rgb(250, 250, 7);
+  animation-name: AriaRetryHoney;
+  animation-duration: 2.75s;
+  animation-iteration-count: infinite;
+}
+
+@keyframes AriaRetryHoney {
+  0% {
+    background-color: rgb(250, 250, 7);
+  }
+  50% {
+    background-color: #f5efc4;
+  }
+  100 {
+    background-color: #fadd00;
+  }
+}
+
+
+#guessButtonWin{
+   width: 100%;
+    margin-top: 43px;
+    margin-left: 30px;
+    text-align: center;
+    padding: 0px 0px 0px 0px;
+    font-size: 20pt;
+ background-color: rgb(24, 250, 7);
+  animation-name: ariaWins;
+  animation-duration: .5213s;
+  animation-iteration-count: infinite;
+}
+
+@keyframes ariaWins {
+  0% {
+    background-color: rgb(24, 250, 7);
+  }
+  50% {
+    background-color: #c4f5ca;
+  }
+  100 {
+    background-color: #08fc00;
+  }
+}
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 
 .winBox {
     height: 130px;
