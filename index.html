@@ -163,7 +163,7 @@ Github SongThnappa -->
                         <label for="comment">Aria, What's your Guess?</label>
                       </div>
                       <textarea
-                        class="form-control"
+                        class="form-control guess"
                         rows="1"
                         id="guess"
                         type="text"
@@ -726,6 +726,7 @@ Github SongThnappa -->
               $("#guess")
                 .val("")
                 .change();
+                
               $("textarea#guess").attr(
                 "placeholder",
                 AriaGuess + " IS CORRECT!! GREAT JOB!!!"
@@ -750,6 +751,16 @@ Github SongThnappa -->
               $("button#guessButton").attr("id", "guessButtonRetry");
             }
           });
+
+          document.getElementById("guess").addEventListener("click", function clicktextbox(){
+
+            $("textarea#guess").attr("placeholder", "");
+
+
+
+
+          });
+
       });
     </script>
   </body>

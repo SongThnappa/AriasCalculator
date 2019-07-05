@@ -18,13 +18,28 @@ text-align: center;
 }
 
 textarea{
-background-color: #63f542;
+
 text-align: center;
 }
 textarea[type="text"]
 {
-    font-size:25px;
+    font-size:25pt;
 }
+
+
+::-webkit-input-placeholder { /* Chrome/Opera/Safari */
+    font-size: 15pt;
+  }
+  ::-moz-placeholder { /* Firefox 19+ */
+    font-size: 15pt;
+  }
+  :-ms-input-placeholder { /* IE 10+ */
+    font-size: 15pt;
+  }
+  :-moz-placeholder { /* Firefox 18- */
+    font-size: 15pt;
+  }
+
 
 #subtitle{
 color:white;
@@ -214,7 +229,7 @@ width: 33.3%;
 #guessButton {
     width: 100%;
     margin: 0px 0px 0px 0px;
-    margin-top: 39px;
+    margin-top: 43px;
     margin-left: -20px;
     text-align: center;
     padding: 0px 0px 0px 0px;
@@ -227,7 +242,7 @@ width: 33.3%;
 #guessButtonRetry{
     width: 100%;
     margin: 0px 0px 0px 0px;
-    margin-top: 39px;
+    margin-top: 43px;
     margin-left: -20px;
     text-align: center;
     padding: 0px 0px 0px 0px;
@@ -255,7 +270,7 @@ width: 33.3%;
 #guessButtonWin{
     width: 100%;
     margin: 0px 0px 0px 0px;
-    margin-top: 39px;
+    margin-top: 43px;
     margin-left: -20px;
     text-align: center;
     padding: 0px 0px 0px 0px;
