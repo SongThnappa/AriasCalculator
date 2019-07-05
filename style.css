@@ -22,7 +22,12 @@ background-color: #63f542;
 }
 
 
-
+#subtitle{
+color:white;
+font-size: 15pt;
+margin: 0px 0px 0px 0px;
+padding: 0px 0px 0px 0px;
+}
 
 
 .jumbotron{

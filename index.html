@@ -31,8 +31,10 @@ Github SongThnappa -->
 
     <!-- Jumbotron for Title -->
     <div class="jumbotron">
+	<h4 id="subtitle">Built by Your Daddy</h4>
       <div id = "ariaHeaderText">
       <h1 class="text-center">Aria's Calculator</h1>
+	
       
     </div>
     </div>
@@ -688,6 +690,7 @@ Github SongThnappa -->
 		$("div#ariaGuessFirst").attr("id", "ariaGuessNow");
               console.log(result);
             }
+
             if (result < 0) {
                $("h1#result").attr("id", "negative");
             } else {
@@ -728,6 +731,7 @@ Github SongThnappa -->
 		$("#guess").val('').change();
 		$("textarea#guess").attr("placeholder", (AriaGuess + " IS CORRECT!! GREAT JOB!!!"));
 		$("#result").text(result);
+		$("#negative").text(result);
 		$("button#guessButton").text("CORRECT!!!");
 		$("button#guessButton").attr("id", "guessButtonWin");
 		$("div#resultBox").attr("id", "resultBoxCorrect");
