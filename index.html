@@ -3,12 +3,11 @@ Created by Jessie James Jones Jr
 Github SongThnappa -->
 <!-- P.S. if you are looking at this code...it's time to learn lol -->
 
-
 <!DOCTYPE html>
 <html lang="en">
   <head>
     <meta charset="UTF-8" />
-   
+
     <title>Aria's Calculator</title>
 
     <!-- Added link to the jQuery Library -->
@@ -19,7 +18,10 @@ Github SongThnappa -->
       rel="stylesheet"
       href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css"
     />
-    <link href="https://fonts.googleapis.com/css?family=Freckle+Face&display=swap" rel="stylesheet" />
+    <link
+      href="https://fonts.googleapis.com/css?family=Freckle+Face&display=swap"
+      rel="stylesheet"
+    />
 
     <!-- Added a link to our external stylesheet-->
     <link rel="stylesheet" href="style.css" />
@@ -28,17 +30,13 @@ Github SongThnappa -->
     <script></script>
   </head>
   <body>
-
     <!-- Jumbotron for Title -->
     <div class="jumbotron">
-	<h4 id="subtitle">Built by Your Daddy</h4>
-      <div id = "ariaHeaderText">
-      <h1 class="text-center">Aria's Calculator</h1>
-	
-      
+      <h4 id="subtitle">Built by Your Daddy</h4>
+      <div id="ariaHeaderText">
+        <h1 class="text-center">Aria's Calculator</h1>
+      </div>
     </div>
-    </div>
-    
 
     <div class="container1">
       <div class="row">
@@ -154,22 +152,27 @@ Github SongThnappa -->
                 </div>
               </div>
               <hr />
-		<div id="resultBox">
-              <h1 id="result">???</h1>
-		</div>
+              <div id="resultBox">
+                <h1 id="result">???</h1>
+              </div>
               <div class="row">
-                <div id="guessbox">
-                  <div class="form-group">
-			<div id="ariaGuessFirst">
-                    <label for="comment">Aria, What's your Guess?</label>
-			</div>
-                    <textarea
-                      class="form-control"
-                      rows="2"
-                      id="guess" type="text" placeholder="You have to guess Aria"
-                    ></textarea>
+                <div class="col-lg-6">
+                  <div id="guessbox">
+                    <div class="form-group">
+                      <div id="ariaGuessFirst">
+                        <label for="comment">Aria, What's your Guess?</label>
+                      </div>
+                      <textarea
+                        class="form-control"
+                        rows="1"
+                        id="guess"
+                        type="text"
+                        placeholder="You have to guess Aria"
+                      ></textarea>
+                    </div>
                   </div>
                 </div>
+                <div class="col-lg-6">
                 <div id="guessbox1">
                   <div id="guessButtonDiv">
                     <button
@@ -182,6 +185,7 @@ Github SongThnappa -->
                   </div>
                 </div>
               </div>
+              </div>
             </div>
           </div>
         </div>
@@ -189,22 +193,18 @@ Github SongThnappa -->
           <div class="card">
             <h3 class="card-header">Correct?</h3>
             <div class="cardwinbox">
-                <div class="row">
-                  <div class="col-lg-12">
-                    <div id="winBox">
-
-                    </div>
-                    </div>
-                    </div>
-                    </div>
-
+              <div class="row">
+                <div class="col-lg-12">
+                  <div id="winBox"></div>
+                </div>
+              </div>
+            </div>
           </div>
         </div>
       </div>
     </div>
 
     <script type="text/javascript">
-
       $(document).ready(function() {
         var numbers1 = [0, 1, 2, 3, 4, 5, 6, 7, 8, 9];
         var numbers2 = [0, 1, 2, 3, 4, 5, 6, 7, 8, 9];
@@ -248,9 +248,7 @@ Github SongThnappa -->
         var power = false;
         var equalPressed = false;
         var i;
-	var result;
-
-       
+        var result;
 
         // ++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++
         // ++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++
@@ -306,14 +304,16 @@ Github SongThnappa -->
             $("#operator").text("");
             $("h1#negative").attr("id", "result");
             $("#result").text(result);
-	    $("div#ariaGuessNow").attr("id", "ariaGuessFirst");
+            $("div#ariaGuessNow").attr("id", "ariaGuessFirst");
             equalPressed = false;
-	    $("#guess").val('').change();
-	    $("button#guessButtonRetry").attr("id", "guessButton");
-	    $("button#guessButton").text("Submit Your Guess");
-	    $("button#guessButtonWin").attr("id", "guessButton");
-	    $("button#guessButton").text("Submit Your Guess");
-	    $("textarea#guess").attr("placeholder", "You have to Guess Aria");
+            $("#guess")
+              .val("")
+              .change();
+            $("button#guessButtonRetry").attr("id", "guessButton");
+            $("button#guessButton").text("Submit Your Guess");
+            $("button#guessButtonWin").attr("id", "guessButton");
+            $("button#guessButton").text("Submit Your Guess");
+            $("textarea#guess").attr("placeholder", "You have to Guess Aria");
             console.log(inputValueX);
           });
 
@@ -663,50 +663,47 @@ Github SongThnappa -->
         // ++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++
         // ++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++
 
-		function equalButton() {
-            if (add === true) {
-              additionFunc(numberX, numberY);
-              // $("#result").text(result);
-		 $("div#ariaGuessFirst").attr("id", "ariaGuessNow");
-              console.log(result);
-            } else if (subtract === true) {
-              subtractionFunc(numberX, numberY);
-              // $("#result").text(result);
-		$("div#ariaGuessFirst").attr("id", "ariaGuessNow");
-              console.log(result);
-            } else if (multiply === true) {
-              multiplicationFunc(numberX, numberY);
-              // $("#result").text(result);
-		$("div#ariaGuessFirst").attr("id", "ariaGuessNow");
-              console.log(result);
-            } else if (divide === true) {
-              divideFunc(numberX, numberY);
-              // $("#result").text(result);
-		$("div#ariaGuessFirst").attr("id", "ariaGuessNow");
-              console.log(result);
-            } else if (power === true) {
-              powerFunc(numberX, numberY);
-              // $("#result").text(result);
-		$("div#ariaGuessFirst").attr("id", "ariaGuessNow");
-              console.log(result);
-            }
-
-            if (result < 0) {
-               $("h1#result").attr("id", "negative");
-            } else {
-            }
-
-            equalPressed = true;
+        function equalButton() {
+          if (add === true) {
+            additionFunc(numberX, numberY);
+            // $("#result").text(result);
+            $("div#ariaGuessFirst").attr("id", "ariaGuessNow");
+            console.log(result);
+          } else if (subtract === true) {
+            subtractionFunc(numberX, numberY);
+            // $("#result").text(result);
+            $("div#ariaGuessFirst").attr("id", "ariaGuessNow");
+            console.log(result);
+          } else if (multiply === true) {
+            multiplicationFunc(numberX, numberY);
+            // $("#result").text(result);
+            $("div#ariaGuessFirst").attr("id", "ariaGuessNow");
+            console.log(result);
+          } else if (divide === true) {
+            divideFunc(numberX, numberY);
+            // $("#result").text(result);
+            $("div#ariaGuessFirst").attr("id", "ariaGuessNow");
+            console.log(result);
+          } else if (power === true) {
+            powerFunc(numberX, numberY);
+            // $("#result").text(result);
+            $("div#ariaGuessFirst").attr("id", "ariaGuessNow");
+            console.log(result);
           }
 
+          if (result < 0) {
+            $("h1#result").attr("id", "negative");
+          } else {
+          }
 
+          equalPressed = true;
+        }
 
-        document.getElementById("button-equal").addEventListener("click", equalButton);
-    
+        document
+          .getElementById("button-equal")
+          .addEventListener("click", equalButton);
 
-
-
- // ++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++
+        // ++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++
         // ++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++
         // ++++++++++++++++GUESS BOX FOR ARIA++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++
         // ++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++
@@ -714,66 +711,46 @@ Github SongThnappa -->
         document
           .getElementById("guessButton")
           .addEventListener("click", function guessValue() {
-            	var AriaGuess = document.getElementById("guess").value;
-            	AriaGuess=parseInt(AriaGuess, 10);
-		equalButton();	
-		console.log(AriaGuess);
-		console.log(result);
-		
+            var AriaGuess = document.getElementById("guess").value;
+            AriaGuess = parseInt(AriaGuess, 10);
+            equalButton();
+            console.log(AriaGuess);
+            console.log(result);
 
-		if (AriaGuess === result){
-
-// second guess logic =============================================================
-		$("div#resultBoxIncorrect").attr("id", "resultBox");
-		$("button#guessButtonRetry").attr("id", "guessButton");	
-// ================================================================================	
-		console.log("You are correct");
-		$("#guess").val('').change();
-		$("textarea#guess").attr("placeholder", (AriaGuess + " IS CORRECT!! GREAT JOB!!!"));
-		$("#result").text(result);
-		$("#negative").text(result);
-		$("button#guessButton").text("CORRECT!!!");
-		$("button#guessButton").attr("id", "guessButtonWin");
-		$("div#resultBox").attr("id", "resultBoxCorrect");
-		$("div#ariaGuessNow").attr("id", "ariaGuessFirst");
-		
-		
-}
-
-		else{
-		
-		$("#guess").val('').change();
-		console.log("Try again");
-		$("div#resultBox").attr("id", "resultBoxIncorrect");
-		$("button#guessButton").text("Try Again");
-		$("textarea#guess").attr("placeholder", (AriaGuess + " is not correct. Try Again Honey"));
-		$("button#guessButton").attr("id", "guessButtonRetry");
-
-}
-
+            if (AriaGuess === result) {
+              // second guess logic =============================================================
+              $("div#resultBoxIncorrect").attr("id", "resultBox");
+              $("button#guessButtonRetry").attr("id", "guessButton");
+              // ================================================================================
+              console.log("You are correct");
+              $("#guess")
+                .val("")
+                .change();
+              $("textarea#guess").attr(
+                "placeholder",
+                AriaGuess + " IS CORRECT!! GREAT JOB!!!"
+              );
+              $("#result").text(result);
+              $("#negative").text(result);
+              $("button#guessButton").text("CORRECT!!!");
+              $("button#guessButton").attr("id", "guessButtonWin");
+              $("div#resultBox").attr("id", "resultBoxCorrect");
+              $("div#ariaGuessNow").attr("id", "ariaGuessFirst");
+            } else {
+              $("#guess")
+                .val("")
+                .change();
+              console.log("Try again");
+              $("div#resultBox").attr("id", "resultBoxIncorrect");
+              $("button#guessButton").text("Try Again");
+              $("textarea#guess").attr(
+                "placeholder",
+                AriaGuess + " is not correct. Try Again Honey"
+              );
+              $("button#guessButton").attr("id", "guessButtonRetry");
+            }
           });
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-});
+      });
     </script>
   </body>
 </html>
